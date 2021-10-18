@@ -1,19 +1,21 @@
-import React from 'react'
-import Review from './Review'
+import { useState } from 'react'
+import Question from './Question'
 import data from './data'
 
 function App() {
+  const [questions, setQuestions] = useState(data)
   return (
-    <main className='flex flex-col justify-center h-screen items-center'>
-      <div className='mb-8 flex flex-col items-center'>
-        <h5 className='font-bold text-2xl'>Our Reviews</h5>
-        <div className='h-1 w-2/3 mt-1 bg-indigo-500'></div>
-      </div>
-      <Review/>
+    <main className="lg:flex lg:justify-center">
+      <section className=" bg-white mx-8 my-16 rounded-lg lg:w-1/2">
+        <h3 className=" mx-8 pt-10 mb-8 font-bold text-2xl ">
+          Questions and answers about login
+        </h3>
+        {questions.map((question) => {
+          return <Question key={question.id} {...question} />
+        })}
+      </section>
     </main>
   )
 }
 
 export default App
-
-
